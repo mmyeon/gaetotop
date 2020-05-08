@@ -1,7 +1,7 @@
 @import "./styles/_font.scss";
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap");
 
 * {
-  font-family: "Gugi", cursive;
   text-decoration: none;
   list-style: none;
   padding: 0px;
