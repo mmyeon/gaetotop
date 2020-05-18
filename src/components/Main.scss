@@ -4,6 +4,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  &.scroll {
+    width: 1000vw;
+  }
 
   .logo {
     font-family: "Gugi", cursive;
