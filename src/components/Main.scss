@@ -52,6 +52,19 @@
           background: #f8f8f8;
         }
 
+        .wall-front-a {
+          transform: translateZ(300vw);
+        }
+        .wall-front-b {
+          transform: translateZ(50vw);
+        }
+        .wall-front-c {
+          transform: translateZ(-200vw);
+        }
+        .wall-front-d {
+          transform: translateZ(-500vw);
+        }
+
         .wall-front {
           .wall-content {
             // 가운데 정렬
