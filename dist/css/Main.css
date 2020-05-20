@@ -1,0 +1,59 @@
+.main {
+  height: 500vw;
+  color: #555;
+  background: #fff000;
+}
+
+.main .world {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.main .world .stage {
+  position: abosolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.main .world .stage .house {
+  width: 100vw;
+  height: 100vh;
+  -webkit-transform: translateZ(-490vw);
+          transform: translateZ(-490vw);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.main .world .stage .house .wall {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.main .world .stage .house .wall-front .wall-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+}
+
+.main .world .stage .house .wall-front .wall-content .wall-title {
+  font-size: 5rem;
+}
+/*# sourceMappingURL=Main.css.map */
