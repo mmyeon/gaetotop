@@ -1,47 +1,62 @@
-.home {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  &.scroll {
-    width: 1000vw;
-  }
+.main {
+  height: 500vw;
+  color: #555;
+  background: #fff000;
 
-  .logo {
-    font-family: "Gugi", cursive;
-    font-size: 13vw;
-    font-weight: 500;
-    letter-spacing: -5px;
-  }
-  .logo__desc {
-    font-family: "Nanum Myeongjo", serif;
-    font-size: 2vw;
-    letter-spacing: 2px;
-  }
+  .world {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    // 3D공간으로 만들기
+    // perspective: 1000px;
 
-  .bottom__container {
-    margin-top: 70px;
-    position: relative;
-    .dog__face {
-      width: 100px;
-      height: 100px;
-      background: skyblue;
-      border-radius: 50%;
-      transition: 1.2s;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .stage {
+      position: abosolute;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      transform-style: preserve-3d;
 
-      &:hover {
-        background: pink;
-      }
-      .button__text {
-        position: absolute;
-        margin: 0 auto;
-        font-family: "Nanum Myeongjo", serif;
-        font-size: 17px;
-        line-height: 5;
+      .house {
+        width: 100vw;
+        height: 100vh;
+        // 화면에 꽉 차지 않고 멀리 있는 것처럼 보이기 위해서 적용
+        transform: translateZ(-490vw);
+        transform-style: preserve-3d;
+
+        .wall {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(255, 255, 255, 0.8);
+        }
+
+        .wall-front {
+          .wall-content {
+            // 가운데 정렬
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+            .wall-title {
+              // 5배
+              font-size: 5rem;
+            }
+          }
+        }
+
+        // .wall-left {
+        //   width: 1000vw;
+        //   // 아직 눈에 보이지 않음(와이!!1)
+        //   transform: rotateY(90deg) translateZ(-500vw);
+        //   background: red;
+        // }
       }
     }
   }
