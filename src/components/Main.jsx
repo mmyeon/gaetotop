@@ -1,26 +1,39 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Main.scss";
 
-const Home = () => {
-  const [isScroll, setIsScroll] = useState(false);
-
+const Main = () => {
   return (
-    <div className={`home ${isScroll ? "scroll" : ""}`}>
-      <div className="logo">개토톱</div>
-      <div className="logo__desc">
-        <p>슬개골이 아픈 강아지가 치료받기까지 보호자의 마음고생기</p>
-      </div>
-      <div className="bottom__container" onClick={handleClick}>
-        <div className="dog__face">
-          <div className="button__text">이야기 듣기</div>
+    <div className="main">
+      <div className="world">
+        <div className="stage">
+          <div className="house">
+            <section className="wall wall-left"></section>
+            <section className="wall wall-right"></section>
+            <section className="wall wall-front wall-front-a">
+              <div className="wall-content">
+                <h2 className="wall-title">말랑이가 아파요</h2>
+              </div>
+            </section>
+            <section className="wall wall-front wall-front-b">
+              <div className="wall-content">
+                <h2 className="wall-title">병원에 찾아갔어요</h2>
+              </div>
+            </section>
+            <section className="wall wall-front wall-front-c">
+              <div className="wall-content">
+                <h2 className="wall-title">슬개골 수술을 받았어요</h2>
+              </div>
+            </section>
+            <section className="wall wall-front wall-front-d">
+              <div className="wall-content">
+                <h2 className="wall-title">수술 후 회복하고 있어요</h2>
+              </div>
+            </section>
+          </div>
         </div>
       </div>
     </div>
   );
-
-  function handleClick() {
-    setIsScroll(true);
-  }
 };
 
-export default Home;
+export default Main;
