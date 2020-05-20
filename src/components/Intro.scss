@@ -1,0 +1,48 @@
+.home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &.hidden {
+    display: none;
+  }
+
+  .logo {
+    font-family: "Gugi", cursive;
+    font-size: 13vw;
+    font-weight: 500;
+    letter-spacing: -5px;
+  }
+  .logo__desc {
+    font-family: "Nanum Myeongjo", serif;
+    font-size: 2vw;
+    letter-spacing: 2px;
+  }
+
+  .bottom__container {
+    margin-top: 70px;
+    position: relative;
+    .dog__face {
+      width: 100px;
+      height: 100px;
+      background: skyblue;
+      border-radius: 50%;
+      transition: 1.2s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        background: pink;
+      }
+      .button__text {
+        position: absolute;
+        margin: 0 auto;
+        font-family: "Nanum Myeongjo", serif;
+        font-size: 17px;
+        line-height: 5;
+      }
+    }
+  }
+}
