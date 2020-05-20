@@ -10,6 +10,8 @@
   top: 0;
   width: 100vw;
   height: 100vh;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
 }
 
 .main .world .stage {
@@ -38,6 +40,40 @@
   width: 100vw;
   height: 100vh;
   background: rgba(255, 255, 255, 0.8);
+}
+
+.main .world .stage .house .wall-left {
+  width: 1000vw;
+  -webkit-transform: rotateY(90deg) translateZ(-500vw);
+          transform: rotateY(90deg) translateZ(-500vw);
+  background: #f8f8f8;
+}
+
+.main .world .stage .house .wall-right {
+  width: 1000vw;
+  -webkit-transform: rotateY(90deg) translateZ(-400vw);
+          transform: rotateY(90deg) translateZ(-400vw);
+  background: #f8f8f8;
+}
+
+.main .world .stage .house .wall-front-a {
+  -webkit-transform: translateZ(300vw);
+          transform: translateZ(300vw);
+}
+
+.main .world .stage .house .wall-front-b {
+  -webkit-transform: translateZ(50vw);
+          transform: translateZ(50vw);
+}
+
+.main .world .stage .house .wall-front-c {
+  -webkit-transform: translateZ(-200vw);
+          transform: translateZ(-200vw);
+}
+
+.main .world .stage .house .wall-front-d {
+  -webkit-transform: translateZ(-500vw);
+          transform: translateZ(-500vw);
 }
 
 .main .world .stage .house .wall-front .wall-content {
