@@ -3,6 +3,24 @@
   color: #555;
   background: #fff000;
 
+  .progress-bar-container {
+    .progress-bar-con {
+      background: #555;
+      height: 5px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      width: 100vw;
+
+      .progress-bar {
+        width: 20%;
+        height: 100%;
+        background: #00a8ff;
+      }
+    }
+  }
+
   .world {
     position: fixed;
     left: 0;

@@ -12,15 +12,16 @@ const Main = () => {
 
   useEffect(() => {
     if (mainRef.current) {
-      // const maxScrollValue = mainRef.current.clientHeight - innerHeight;
       setMaxScrollValue(mainRef.current.clientHeight - window.innerHeight);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mainRef.current]);
 
+  const scrollPer = scroll / maxScrollValue;
   const handleScroll = useCallback(() => {
     setScroll(window.pageYOffset);
-    setZmove((scroll / maxScrollValue) * 980 - 490);
+
+    setZmove(scrollPer * 980 - 490);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scroll]);
 
@@ -44,6 +45,14 @@ const Main = () => {
 
   return (
     <div className="main" ref={mainRef}>
+      <div className="progress-bar-container">
+        <div className="progress-bar-con">
+          <div
+            className="progress-bar"
+            style={{ width: `${scrollPer}` * 100 + "%" }}
+          ></div>
+        </div>
+      </div>
       <div className="world">
         {/* 캐릭터와 하우스를 감싸는 stage */}
         <div className="stage">
