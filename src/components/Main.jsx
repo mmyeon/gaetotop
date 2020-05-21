@@ -24,12 +24,23 @@ const Main = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scroll]);
 
+  const handleResize = useCallback(() => {
+    setMaxScrollValue(mainRef.current.clientHeight - window.innerHeight);
+  }, []);
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [handleScroll]);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [handleResize]);
 
   return (
     <div className="main" ref={mainRef}>
