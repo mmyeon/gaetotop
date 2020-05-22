@@ -1,25 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
+import DogAnimation from "./DogAnimation";
+// import Movingdog from "./Movingdog";
 import "./Intro.scss";
 
-const Home = () => {
-  const [isHidden, setIsHidden] = useState(false);
+// props = {
+//   setIsVisibleMain: 함수
+// };
 
+// const setIsVisibleMain = props.setIsVisibleMaind;
+
+// const Home = (props) => {
+const Home = ({ setIsVisibleMain }) => {
   return (
-    <div className={`home ${isHidden ? "hidden" : ""}`}>
+    <div className="home">
       <div className="logo">개토톱</div>
       <div className="logo__desc">
         <p>슬개골이 아픈 강아지가 치료받기까지 보호자의 마음고생기</p>
       </div>
       <div className="bottom__container" onClick={handleClick}>
         <div className="dog__face">
-          <div className="button__text">이야기 듣기</div>
+          {/* <div className="button__text">이야기 듣기</div> */}
+          Go
         </div>
       </div>
+      {/* <Movingdog /> */}
+      <DogAnimation />
     </div>
   );
 
   function handleClick() {
-    setIsHidden(true);
+    // props.setIsVisibleMain(true);
+    setIsVisibleMain(true);
   }
 };
 

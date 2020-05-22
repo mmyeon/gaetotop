@@ -1,22 +1,21 @@
 .home {
+  background: #a0c3d2;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  &.hidden {
-    display: none;
-  }
 
   .logo {
     font-family: "Gugi", cursive;
-    font-size: 13vw;
+    font-size: 22vw;
     font-weight: 500;
     letter-spacing: -5px;
   }
   .logo__desc {
     font-family: "Nanum Myeongjo", serif;
-    font-size: 2vw;
+    font-weight: 900;
+    font-size: 2.5vw;
     letter-spacing: 2px;
   }
 
@@ -26,22 +25,32 @@
     .dog__face {
       width: 100px;
       height: 100px;
-      background: skyblue;
+      color: white;
+      background: #000000;
       border-radius: 50%;
-      transition: 1.2s;
       display: flex;
       justify-content: center;
       align-items: center;
+      font-family: "Gugi", cursive;
+      letter-spacing: 2px;
+      font-size: 30px;
+      line-height: 5;
+      cursor: pointer;
+      background: #ff4532;
+      animation: move 1s alternate-reverse infinite;
 
-      &:hover {
-        background: pink;
-      }
-      .button__text {
-        position: absolute;
-        margin: 0 auto;
-        font-family: "Nanum Myeongjo", serif;
-        font-size: 17px;
-        line-height: 5;
+      // &:hover {
+      //   background: #ff4532;
+      //   animation: move 1s alternate-reverse infinite;
+      // }
+
+      @keyframes move {
+        to {
+          left: 10px;
+          transform: translateX(30px);
+          transition: 3s;
+          transform-origin: left;
+        }
       }
     }
   }
