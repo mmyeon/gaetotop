@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { wag, tongue, kick } from "./styled";
+import { wag, tongue, kick } from "./index.styles";
 
 const MovingDog = styled.div`
   position: absolute;
