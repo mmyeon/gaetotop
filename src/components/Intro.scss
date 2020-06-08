@@ -37,18 +37,22 @@
       line-height: 5;
       cursor: pointer;
       background: #ff4532;
-      animation: move 1s alternate-reverse infinite;
+      // animation: move 1s alternate-reverse infinite;
 
       // &:hover {
       //   background: #ff4532;
-      //   animation: move 1s alternate-reverse infinite;
+      animation: move 0.8s alternate-reverse infinite;
       // }
 
       @keyframes move {
-        to {
+        50% {
+          transform: translateX(-10px);
+        }
+
+        100% {
           left: 10px;
           transform: translateX(30px);
-          transition: 3s;
+          transition: 2s;
           transform-origin: left;
         }
       }

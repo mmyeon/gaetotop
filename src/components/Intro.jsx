@@ -1,37 +1,46 @@
 import React from "react";
+import styled from "styled-components";
+import Ball from "./Ball";
 import DogAnimation from "./DogAnimation";
-// import Movingdog from "./Movingdog";
-import "./Intro.scss";
 
-// props = {
-//   setIsVisibleMain: 함수
-// };
+const Home = styled.div`
+  background: #a0c3d2;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
-// const setIsVisibleMain = props.setIsVisibleMaind;
+const Logo = styled.div`
+  font-family: "Gugi", cursive;
+  font-size: 22vw;
+  font-weight: 500;
+  letter-spacing: -5px;
+`;
 
-// const Home = (props) => {
-const Home = ({ setIsVisibleMain }) => {
+const LogoDesc = styled.p`
+  font-family: "Nanum Myeongjo", serif;
+  font-weight: 900;
+  font-size: 2.5vw;
+  letter-spacing: 2px;
+`;
+
+const Intro = ({ setIsVisibleMain }) => {
   return (
-    <div className="home">
-      <div className="logo">개토톱</div>
-      <div className="logo__desc">
-        <p>슬개골이 아픈 강아지가 치료받기까지 보호자의 마음고생기</p>
-      </div>
-      <div className="bottom__container" onClick={handleClick}>
-        <div className="dog__face">
-          {/* <div className="button__text">이야기 듣기</div> */}
-          Go
-        </div>
-      </div>
-      {/* <Movingdog /> */}
+    <Home>
+      <Logo>개토톱</Logo>
+      <LogoDesc>
+        슬개골이 아픈 강아지가 치료받기까지 보호자의 마음고생기
+      </LogoDesc>
+      <Ball onClick={handleClick}>Go</Ball>
       <DogAnimation />
-    </div>
+    </Home>
   );
 
   function handleClick() {
-    // props.setIsVisibleMain(true);
     setIsVisibleMain(true);
   }
 };
 
-export default Home;
+export default Intro;
