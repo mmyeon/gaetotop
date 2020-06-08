@@ -1,7 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import Ball from "./Ball";
 import DogAnimation from "./DogAnimation";
+import { get } from "../modules/sample";
 
 const Home = styled.div`
   background: #a0c3d2;
@@ -26,10 +28,11 @@ const LogoDesc = styled.p`
   letter-spacing: 2px;
 `;
 
-const Intro = ({ setIsVisibleMain }) => {
+const Intro = ({ setIsVisibleMain, sample, get }) => {
   return (
     <Home>
       <Logo>개토톱</Logo>
+      {/* <Logo>개토톱{sample.miyeon}</Logo> */}
       <LogoDesc>
         슬개골이 아픈 강아지가 치료받기까지 보호자의 마음고생기
       </LogoDesc>
@@ -43,4 +46,6 @@ const Intro = ({ setIsVisibleMain }) => {
   }
 };
 
-export default Intro;
+export default connect(({ sample }) => ({ sample }), {
+  get,
+})(Intro);
