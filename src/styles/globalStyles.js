@@ -1,3 +1,5 @@
+// TODO: 사용하는데가 없음. styeld-components의 glabol 적용하는 방법 찾아서 적용하기.
+
 import { createGlobalStyle } from "styled-components";
 
 const Globalstyle = createGlobalStyle`
