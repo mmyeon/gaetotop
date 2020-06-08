@@ -1,5 +1,4 @@
 import React from "react";
-import "./DogAnimation.scss";
 import styled from "styled-components";
 
 import { wag, tongue, kick } from "./styled";
