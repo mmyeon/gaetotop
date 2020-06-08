@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import Ball from "./Ball";
-import DogAnimation from "./DogAnimation";
+import Ball from "../components/Ball";
+import DogAnimation from "../components/DogAnimation";
 import { get } from "../modules/sample";
 
 const Home = styled.div`
@@ -46,6 +46,7 @@ const Intro = ({ setIsVisibleMain, sample, get }) => {
   }
 };
 
+// TODO:  containers에 만들어서 분리
 export default connect(({ sample }) => ({ sample }), {
   get,
 })(Intro);

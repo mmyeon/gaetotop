@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Intro from "./components/Intro";
-import Main from "./components/Main";
+import Intro from "./containers/Intro";
+import Main from "./containers/Main";
 // import Progressbar from "./components/Progressbar";
 
 // TODO: Font옮기고 파일 삭제하기
