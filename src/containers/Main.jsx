@@ -1,6 +1,8 @@
 import React, { useState, useRef, useCallback } from "react";
 import { useEffect } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import { updateYOffset } from "../modules/scroll";
 
 const Mainwrapper = styled.div`
   height: 500vw;
@@ -72,7 +74,7 @@ const Walltitle = styled.h2`
   font-size: 5rem;
 `;
 
-const Main = () => {
+const Main = ({ yOffset, updateYOffset }) => {
   const [scroll, setScroll] = useState(0);
   const [zmove, setZmove] = useState(0);
   const [maxScrollValue, setMaxScrollValue] = useState(1);
@@ -91,6 +93,7 @@ const Main = () => {
   const scrollPer = scroll / maxScrollValue;
   const handleScroll = useCallback(() => {
     setScroll(window.pageYOffset);
+    updateYOffset(window.pageYOffset);
     setZmove(scrollPer * 980 - 490);
     console.log(scrollPer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -155,12 +158,12 @@ const Main = () => {
             ></Wallside>
             <Wall front="frontA">
               <Wallcontent>
-                <Walltitle>말랑이가 아파요</Walltitle>
+                <Walltitle>말랑이가 아파요{yOffset}</Walltitle>
               </Wallcontent>
             </Wall>
             <Wall front="frontB">
               <Wallcontent>
-                <Walltitle>병원에 찾아갔어요</Walltitle>
+                <Walltitle>병원에 찾아갔어요{yOffset}</Walltitle>
               </Wallcontent>
             </Wall>
             <Wall front="frontC">
@@ -180,4 +183,6 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default connect(({ scroll }) => ({ yOffset: scroll.yOffset }), {
+  updateYOffset,
+})(Main);

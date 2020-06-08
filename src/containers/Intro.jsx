@@ -46,7 +46,6 @@ const Intro = ({ setIsVisibleMain, sample, get }) => {
   }
 };
 
-// TODO:  containers에 만들어서 분리
 export default connect(({ sample }) => ({ sample }), {
   get,
 })(Intro);

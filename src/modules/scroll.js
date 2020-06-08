@@ -1,18 +1,17 @@
 import { createAction, handleActions } from "redux-actions";
 
-const GET_NOW = "sample/GET_NOW";
+const UPDATE_Y_OFFSET = "scroll/UPDATE_Y_OFFSET";
 
-export const getNow = createAction(GET_NOW, () => {});
+export const updateYOffset = createAction(UPDATE_Y_OFFSET, (val) => ({ val }));
 
 const initialState = {
-  now: 0,
+  yOffset: 0,
 };
 
 const actions = handleActions(
   {
-    [GET_NOW]: (state, {}) => {
-      console.log("잘 왔니?");
-      return { ...state };
+    [UPDATE_Y_OFFSET]: (state, { payload }) => {
+      return { ...state, yOffset: payload.val };
     },
   },
   initialState
