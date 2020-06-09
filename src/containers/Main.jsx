@@ -92,7 +92,7 @@ const Main = ({ yOffset, updateYOffset }) => {
 
   const scrollPer = scroll / maxScrollValue;
   const handleScroll = useCallback(() => {
-    setScroll(window.pageYOffset);
+    // setScroll(window.pageYOffset);
     updateYOffset(window.pageYOffset);
     setZmove(scrollPer * 980 - 490);
     console.log(scrollPer);
@@ -183,6 +183,15 @@ const Main = ({ yOffset, updateYOffset }) => {
   );
 };
 
-export default connect(({ scroll }) => ({ yOffset: scroll.yOffset }), {
-  updateYOffset,
-})(Main);
+// 리덕스 스테이트를 컴포넌트 리액트로 래핑
+const mapStateToProps = ({ scroll }) => ({
+  yOffset: scroll.yOffset,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  updateYOffset: () => {
+    dispatch(updateYOffset());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
