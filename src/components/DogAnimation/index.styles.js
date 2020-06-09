@@ -14,18 +14,8 @@ const kickKeyframes = keyframes`
 
 const tongueKeyframes = keyframes`
 50% {
-    transform: rotate(45deg) translateY(2.5px);
+    transform: rotate(30deg) translateY(2.5px);
   }
-`;
-
-// TODO: 쓰는곳 적용하기
-const moveKeyframes = keyframes`
-100% {
-    animation-delay: 2s;
-    transform: translateX(30px);
-    transition: 2s;
-    transform-origin: left;
-    }
 `;
 
 const movingDog = styled.div`
@@ -68,8 +58,6 @@ const leg1 = styled(dogLeg)`
   transform-origin: top;
   animation: ${kickKeyframes} 1s infinite;
 `;
-/* /* transform: ${({ kick }) => };  */
-/* /* transform: ${({ kick }) => };  */
 
 const leg2 = styled(dogLeg)`
   top: 41px;
@@ -143,8 +131,7 @@ const tongue = styled.div`
   z-index: -1;
   transform: rotate(45deg);
   transform-origin: top;
-  /* TODO: tongueKeyFrame으로 변경 */
-  animation: ${wagKeyframes} 1s infinite;
+  animation: ${tongueKeyframes} 0.8s infinite;
 `;
 
 export default {
