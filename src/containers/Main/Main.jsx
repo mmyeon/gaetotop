@@ -26,7 +26,6 @@ const Main = ({
   useEffect(() => {
     if (mainRef.current) {
       updateMaxScrollValue(mainRef.current.clientHeight - window.innerHeight);
-      // setMaxScroll(mainRef.current.clientHeight - window.innerHeight);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mainRef.current]);
@@ -46,9 +45,9 @@ const Main = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scroll]);
 
-  // const handleResize = useCallback(() => {
-  //   setMaxScroll(mainRef.current.clientHeight - window.innerHeight);
-  // }, []);
+  const handleResize = useCallback(() => {
+    updateMaxScrollValue(mainRef.current.clientHeight - window.innerHeight);
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -58,12 +57,12 @@ const Main = ({
   }, [handleScroll]);
 
   // 리사이즈
-  // useEffect(() => {
-  //   window.addEventListener("resize", handleResize);
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, [handleResize]);
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [handleResize]);
 
   useEffect(() => {
     // 위치만 변함
@@ -71,11 +70,9 @@ const Main = ({
     window.scrollY = 0;
     // setScroll(0);
     // setZmove(0);
-
     // console.log("렌더링됨");
     // console.log("scroll", scroll);
     // console.log("전", window.pageYOffset);
-
     // console.log("후", window.pageYOffset);
     // console.log(scrollPer);
     // // 화면은 변경되는데 스크롤바 위치가 탑으로 돌아오지 않음
