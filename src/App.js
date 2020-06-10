@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Intro from "./containers/Intro";
-import Main from "./containers/Main";
+import Intro from "./containers/Intro/Intro";
+import Main from "./containers/Main/Main";
 import Globalstyle from "./styles/GlobalStyles";
 // import Progressbar from "./components/Progressbar";
 

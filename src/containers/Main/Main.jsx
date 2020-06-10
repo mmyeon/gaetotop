@@ -1,78 +1,8 @@
 import React, { useState, useRef, useCallback } from "react";
 import { useEffect } from "react";
-import styled from "styled-components";
+import Styled from "./Main.styles";
 import { connect } from "react-redux";
-import { updateYOffset } from "../modules/scroll";
-
-const Mainwrapper = styled.div`
-  height: 500vw;
-  color: #555;
-  background: #fff000;
-`;
-
-const World = styled.div`
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  perspective: 1000px;
-`;
-
-const Stage = styled.div`
-  position: abosolute;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  transform-style: preserve-3d;
-`;
-
-const House = styled.div`
-  width: 100vw;
-  height: 100vh;
-  transform: translateZ(-490vw);
-  transform-style: preserve-3d;
-`;
-
-const Wall = styled.section`
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(255, 255, 255, 0.8);
-
-  transform: ${({ front }) => {
-    switch (front) {
-      case "frontA":
-        return "translateZ(300vw)";
-      case "frontB":
-        return "translateZ(50vw)";
-      case "frontC":
-        return "translateZ(-200vw)";
-      default:
-        return "translateZ(-500vw)";
-    }
-  }};
-`;
-
-const Wallside = styled(Wall)`
-  background: #f8f8f8;
-  width: 1000vw;
-  transform: ${({ transform }) => transform};
-`;
-
-const Wallcontent = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`;
-
-const Walltitle = styled.h2`
-  font-size: 5rem;
-`;
+import { updateYOffset } from "../../modules/scroll";
 
 const Main = ({ yOffset, updateYOffset }) => {
   console.log("yOffset", yOffset);
@@ -137,50 +67,50 @@ const Main = ({ yOffset, updateYOffset }) => {
   }, []);
 
   return (
-    <Mainwrapper ref={mainRef}>
-      <div className="progress-bar-container">
-        <div className="progress-bar-con">
-          <div
-            className="progress-bar"
-            style={{ width: `${scrollPer}` * 100 + "%" }}
-          ></div>
-        </div>
-      </div>
-      <World>
-        <Stage>
-          <House ref={houseRef} style={{ transform: `translateZ(${zmove}vw)` }}>
-            <Wallside
+    <Styled.mainwrapper ref={mainRef}>
+      <Styled.progressbarcontainer>
+        <Styled.progressbar
+          style={{ width: `${scrollPer}` * 100 + "%" }}
+        ></Styled.progressbar>
+      </Styled.progressbarcontainer>
+      <Styled.world>
+        <Styled.stage>
+          <Styled.house
+            ref={houseRef}
+            style={{ transform: `translateZ(${zmove}vw)` }}
+          >
+            <Styled.wallside
               left
               transform={"rotateY(90deg) translateZ(-500vw)"}
-            ></Wallside>
-            <Wallside
+            ></Styled.wallside>
+            <Styled.wallside
               right
               transform={"rotateY(90deg) translateZ(-400vw)"}
-            ></Wallside>
-            <Wall front="frontA">
-              <Wallcontent>
-                <Walltitle>말랑이가 아파요{yOffset}</Walltitle>
-              </Wallcontent>
-            </Wall>
-            <Wall front="frontB">
-              <Wallcontent>
-                <Walltitle>병원에 찾아갔어요{yOffset}</Walltitle>
-              </Wallcontent>
-            </Wall>
-            <Wall front="frontC">
-              <Wallcontent>
-                <Walltitle>슬개골 수술을 받았어요</Walltitle>
-              </Wallcontent>
-            </Wall>
-            <Wall frontD>
-              <Wallcontent>
-                <Walltitle>수술 후 회복하고 있어요</Walltitle>
-              </Wallcontent>
-            </Wall>
-          </House>
-        </Stage>
-      </World>
-    </Mainwrapper>
+            ></Styled.wallside>
+            <Styled.wall front="frontA">
+              <Styled.wallcontent>
+                <Styled.walltitle>말랑이가 아파요{yOffset}</Styled.walltitle>
+              </Styled.wallcontent>
+            </Styled.wall>
+            <Styled.wall front="frontB">
+              <Styled.wallcontent>
+                <Styled.walltitle>병원에 찾아갔어요{yOffset}</Styled.walltitle>
+              </Styled.wallcontent>
+            </Styled.wall>
+            <Styled.wall front="frontC">
+              <Styled.wallcontent>
+                <Styled.walltitle>슬개골 수술을 받았어요</Styled.walltitle>
+              </Styled.wallcontent>
+            </Styled.wall>
+            <Styled.wall frontD>
+              <Styled.wallcontent>
+                <Styled.walltitle>수술 후 회복하고 있어요</Styled.walltitle>
+              </Styled.wallcontent>
+            </Styled.wall>
+          </Styled.house>
+        </Styled.stage>
+      </Styled.world>
+    </Styled.mainwrapper>
   );
 };
 
