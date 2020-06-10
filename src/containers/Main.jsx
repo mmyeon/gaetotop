@@ -75,6 +75,7 @@ const Walltitle = styled.h2`
 `;
 
 const Main = ({ yOffset, updateYOffset }) => {
+  console.log("yOffset", yOffset);
   const [scroll, setScroll] = useState(0);
   const [zmove, setZmove] = useState(0);
   const [maxScrollValue, setMaxScrollValue] = useState(1);
@@ -92,10 +93,10 @@ const Main = ({ yOffset, updateYOffset }) => {
 
   const scrollPer = scroll / maxScrollValue;
   const handleScroll = useCallback(() => {
-    // setScroll(window.pageYOffset);
+    setScroll(window.pageYOffset);
     updateYOffset(window.pageYOffset);
     setZmove(scrollPer * 980 - 490);
-    console.log(scrollPer);
+    // console.log(scrollPer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scroll]);
 
@@ -189,9 +190,12 @@ const mapStateToProps = ({ scroll }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateYOffset: () => {
-    dispatch(updateYOffset());
+  updateYOffset: (val) => {
+    dispatch(updateYOffset(val));
   },
+  // function updateYOffset (val) {
+  //   dispatch(updateYOffset(val));
+  // }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
