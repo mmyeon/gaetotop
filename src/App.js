@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Intro from "./containers/Intro";
 import Main from "./containers/Main";
+import Globalstyle from "./styles/GlobalStyles";
 // import Progressbar from "./components/Progressbar";
 
 // TODO: Font옮기고 파일 삭제하기
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <div className="App">
+      <Globalstyle />
       {!isVisibleMain && <Intro setIsVisibleMain={setIsVisibleMain} />}
       {isVisibleMain && <Main />}
       {/* <Progressbar /> */}
