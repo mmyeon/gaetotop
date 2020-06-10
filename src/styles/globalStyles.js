@@ -3,6 +3,15 @@
 import { createGlobalStyle } from "styled-components";
 
 const Globalstyle = createGlobalStyle`
+
+/* @import "./styles/_font.scss";
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+body {
+font-family: 'Gugi', cursive;
+};
+
 html,
 body,
 h1,
@@ -161,6 +170,8 @@ table {
   list-style: none;
   box-sizing: border-box;
 }
+
+
 
 `;
 
