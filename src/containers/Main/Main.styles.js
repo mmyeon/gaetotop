@@ -17,7 +17,7 @@ const progressbarcontainer = styled.div`
 `;
 
 const progressbar = styled.div`
-  width: 20%;
+  width: ${(props) => `${props.width}%`};
   height: 100%;
   background: #00a8ff;
 `;
