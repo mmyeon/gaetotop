@@ -2,37 +2,53 @@ import React, { useState, useRef, useCallback } from "react";
 import { useEffect } from "react";
 import Styled from "./Main.styles";
 import { connect } from "react-redux";
-import { updateYOffset } from "../../modules/scroll";
+import {
+  updateYOffset,
+  updateZMove,
+  updateMaxScrollValue,
+} from "../../modules/scroll";
 
-const Main = ({ yOffset, updateYOffset }) => {
-  console.log("yOffset", yOffset);
+const Main = ({
+  yOffset,
+  updateYOffset,
+  zMove,
+  updateZMove,
+  maxScrollValue,
+  updateMaxScrollValue,
+}) => {
   const [scroll, setScroll] = useState(0);
   const [zmove, setZmove] = useState(0);
-  const [maxScrollValue, setMaxScrollValue] = useState(1);
-  // const [pageYoffset, setPageYoffset] = useState(0);
+  const [maxScroll, setMaxScroll] = useState(1);
 
   const houseRef = useRef(null);
   const mainRef = useRef(null);
 
   useEffect(() => {
     if (mainRef.current) {
-      setMaxScrollValue(mainRef.current.clientHeight - window.innerHeight);
+      updateMaxScrollValue(mainRef.current.clientHeight - window.innerHeight);
+      // setMaxScroll(mainRef.current.clientHeight - window.innerHeight);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mainRef.current]);
 
-  const scrollPer = scroll / maxScrollValue;
+  const scrollPer = `${yOffset / maxScrollValue}`;
+  const test = parseInt(scrollPer + 1000, 10);
+  console.log("scrollPer", scrollPer);
   const handleScroll = useCallback(() => {
-    setScroll(window.pageYOffset);
     updateYOffset(window.pageYOffset);
-    setZmove(scrollPer * 980 - 490);
+    // updateZMove(scrollPer);
+    updateZMove(test);
+    updateZMove(test);
+    // setZmove(`{scrollPer}` * 980 - 490);
+    // console.log("zmove", zmove);
+
     // console.log(scrollPer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scroll]);
 
-  const handleResize = useCallback(() => {
-    setMaxScrollValue(mainRef.current.clientHeight - window.innerHeight);
-  }, []);
+  // const handleResize = useCallback(() => {
+  //   setMaxScroll(mainRef.current.clientHeight - window.innerHeight);
+  // }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -41,15 +57,15 @@ const Main = ({ yOffset, updateYOffset }) => {
     };
   }, [handleScroll]);
 
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [handleResize]);
+  // 리사이즈
+  // useEffect(() => {
+  //   window.addEventListener("resize", handleResize);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, [handleResize]);
 
   useEffect(() => {
-    console.log("호출하긴한???", window.scrollY);
     // 위치만 변함
     // window.scrollTo(1, 1);
     window.scrollY = 0;
@@ -114,18 +130,22 @@ const Main = ({ yOffset, updateYOffset }) => {
   );
 };
 
-// 리덕스 스테이트를 컴포넌트 리액트로 래핑
 const mapStateToProps = ({ scroll }) => ({
   yOffset: scroll.yOffset,
+  zMove: scroll.zMove,
+  maxScrollValue: scroll.maxScrollValue,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   updateYOffset: (val) => {
     dispatch(updateYOffset(val));
   },
-  // function updateYOffset (val) {
-  //   dispatch(updateYOffset(val));
-  // }
+  updateZMove: (val) => {
+    dispatch(updateZMove(val));
+  },
+  updateMaxScrollValue: (val) => {
+    dispatch(updateMaxScrollValue(val));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

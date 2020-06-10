@@ -1,25 +1,55 @@
 const UPDATE_Y_OFFSET = "scroll/UPDATE_Y_OFFSET";
+const UPDATE_Z_MOVE = "scroll/UPDATE_Z_MOVE";
+const UPDATE_MAX_SCROLL_VALUE = "scroll/UPDATE_MAX_SCROLL_VALUE";
 
 export const updateYOffset = (val) => {
-  console.log("val", val);
   return {
     type: UPDATE_Y_OFFSET,
     yOffset: val,
   };
 };
 
-const initialState = {
-  yOffset: 0,
+export const updateZMove = (val) => {
+  console.log("zmove", val);
+  return {
+    type: UPDATE_Z_MOVE,
+    zMove: val,
+  };
 };
 
+export const updateMaxScrollValue = (val) => {
+  return {
+    type: UPDATE_MAX_SCROLL_VALUE,
+    maxScrollValue: val,
+  };
+};
+
+const initialState = {
+  yOffset: 0,
+  zMove: 0,
+  maxScrollValue: 1,
+};
+
+// const scrollPer = yOffset / maxScrollValue;
+
 function scroll(state = initialState, action) {
-  console.log("action", action);
+  console.log(state);
+  // console.log("action", action);
   switch (action.type) {
-    // TODO: 메인 컴포넌트에서 리듀서 호출될 때 인자로 들어온 window.pageYOffset을 반영하도록 수정
     case UPDATE_Y_OFFSET:
       return {
         ...state,
         yOffset: action.yOffset,
+      };
+    case UPDATE_Z_MOVE:
+      return {
+        ...state,
+        zMove: action.zMove,
+      };
+    case UPDATE_MAX_SCROLL_VALUE:
+      return {
+        ...state,
+        maxScrollValue: action.maxScrollValue,
       };
     default:
       return state;
