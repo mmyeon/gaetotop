@@ -31,7 +31,7 @@ const Main = ({
   const handleScroll = useCallback(() => {
     console.log("scrollPer", scrollPer);
     updateYOffset(window.pageYOffset);
-    updateZMove(parseInt(scrollPer * 1000, 10) - 490);
+    updateZMove(parseInt(scrollPer * 980, 10) - 490);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scrollPer, yOffset]);
