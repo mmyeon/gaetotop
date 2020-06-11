@@ -43,7 +43,7 @@ const stage = styled.div`
 const house = styled.div`
   width: 100vw;
   height: 100vh;
-  transform: translateZ(-490vw);
+  transform: ${(props) => `${props.transform}`};
   transform-style: preserve-3d;
 `;
 
