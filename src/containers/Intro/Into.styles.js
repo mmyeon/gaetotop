@@ -23,8 +23,16 @@ const logoDesc = styled.p`
   letter-spacing: 2px;
 `;
 
+const dogAndBall = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 60%;
+`;
+
 export default {
   home,
   logo,
   logoDesc,
+  dogAndBall,
 };
