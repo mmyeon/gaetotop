@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useRef, useCallback } from "react";
 import { useEffect } from "react";
 import Styled from "./Main.styles";
 import { connect } from "react-redux";
@@ -29,7 +29,6 @@ const Main = ({
   const scrollPer = yOffset / maxScrollValue;
 
   const handleScroll = useCallback(() => {
-    console.log("scrollPer", scrollPer);
     updateYOffset(window.pageYOffset);
     updateZMove(parseInt(scrollPer * 980, 10) - 490);
 

@@ -10,7 +10,6 @@ export const updateYOffset = (val) => {
 };
 
 export const updateZMove = (val) => {
-  console.log("zmove", val);
   return {
     type: UPDATE_Z_MOVE,
     zMove: val,
@@ -30,11 +29,7 @@ const initialState = {
   maxScrollValue: 1,
 };
 
-// const scrollPer = yOffset / maxScrollValue;
-
 function scroll(state = initialState, action) {
-  console.log(state);
-  // console.log("action", action);
   switch (action.type) {
     case UPDATE_Y_OFFSET:
       return {
