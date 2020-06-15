@@ -22,7 +22,6 @@ const tongue = keyframes`
 }
 100% {
   height: 25px;
-
 }
 `;
 
@@ -32,12 +31,11 @@ const DogFace = styled.div`
   background: peachpuff;
   height: 110px;
   width: 120px;
-  top: 40%;
-  left: 30%;
+  top: 64%;
+  left: 43%;
   border-radius: 60px 60px 120px 120px;
   position: absolute;
   bottom: 573px;
-  left: 20px;
 `;
 
 const DogBody = styled.div`
@@ -240,7 +238,7 @@ const Tongue = styled.div`
   z-index: -2;
 `;
 
-const WalkingDog = () => {
+const FrontDog = () => {
   return (
     <Walkingdog>
       <DogFace>
@@ -274,4 +272,4 @@ const WalkingDog = () => {
   );
 };
 
-export default WalkingDog;
+export default FrontDog;
