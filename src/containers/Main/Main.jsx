@@ -7,6 +7,8 @@ import {
   updateZMove,
   updateMaxScrollValue,
 } from "../../modules/scroll";
+// import FrontDog from "../../components/MovingDog/FrontDog";
+import BackDog from "../../components/MovingDog/BackDog";
 
 const Main = ({
   yOffset,
@@ -95,6 +97,8 @@ const Main = ({
               </Styled.wallcontent>
             </Styled.wall>
           </Styled.house>
+          {/* <FrontDog></FrontDog> */}
+          <BackDog></BackDog>
         </Styled.stage>
       </Styled.world>
     </Styled.mainwrapper>
