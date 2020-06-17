@@ -1,10 +1,22 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 const wag = keyframes`
 50% {
     transform: rotate(10deg);
   }
+`;
+
+const runningFrontLeg = keyframes`
+50%{
+    transform : rotate(30deg);
+}
+`;
+
+const runningBackLeg = keyframes`
+50%{
+    transform : rotate(-10deg);
+}
 `;
 
 const Walkingdog = styled.div`
@@ -31,14 +43,13 @@ const DogFace = styled.div`
 
 const DogBody = styled.div`
   background: peachpuff;
-  height: 208px;
+  height: 155px;
   width: 110px;
   position: relative;
-  top: -14px;
-  left: 35px;
+  top: 21px;
+  left: 49px;
   border-radius: 40%;
   transform: rotate(-110deg);
-  /* TODO:z-index 수정하기. 뒷다리가 몸통보다 뒤로 가도록 */
   z-index: 100;
 `;
 
@@ -49,33 +60,54 @@ const dogLeg = styled.div`
   background: peachpuff;
   transform: rotate(112deg);
   border-radius: 0px 0px 50px 50px;
-  /* position: absolute; */
   position: relative;
-  /* z-index: -1; */
-`;
-
-const Leg1 = styled(dogLeg)`
-  top: 176px;
-  left: 10px;
   transform-origin: top;
 `;
 
+const Leg1 = styled(dogLeg)`
+  top: 127px;
+  left: 6px;
+
+  ${({ running }) =>
+    running &&
+    css`
+      animation: ${runningFrontLeg} 0.5s alternate infinite linear;
+    `}
+`;
+
 const Leg2 = styled(dogLeg)`
-  top: 51px;
-  left: -9px;
+  top: 49px;
+  left: 15px;
+
+  ${({ running }) =>
+    running &&
+    css`
+      animation: ${runningFrontLeg} 0.5s alternate infinite linear;
+    `}
 `;
 
 const Leg3 = styled(dogLeg)`
-  position: relative;
-  top: -62px;
-  left: -9px;
-  z-index: -100;
+  top: -80px;
+  left: 13px;
+
+  ${({ running }) =>
+    running &&
+    css`
+      animation: ${runningBackLeg} 0.7s alternate infinite linear;
+      animation-delay: 250ms;
+    `}
 `;
 
 const Leg4 = styled(dogLeg)`
-  top: -158px;
-  left: 0px;
-  z-index: -100;
+  top: -96px;
+  left: 3px;
+
+  ${({ running }) =>
+    running &&
+    css`
+      animation: ${runningBackLeg} 0.7s alternate infinite linear;
+      animation-delay: 250ms;
+    `}
 `;
 
 const Paw = styled.div`
@@ -101,8 +133,8 @@ const Tail = styled.div`
   box-shadow: -49px -10px 0px 0px peachpuff;
   border-radius: 80%;
   position: relative;
-  bottom: 205px;
-  left: 3px;
+  bottom: 150px;
+  left: 26px;
   transform-origin: bottom;
   animation: ${wag} 1s infinite;
 `;
@@ -125,7 +157,7 @@ const Ear2 = styled(Ear)`
   left: 79px;
 `;
 
-const BackDog = () => {
+const BackDog = ({ running }) => {
   return (
     <Walkingdog>
       <DogFace>
@@ -133,16 +165,16 @@ const BackDog = () => {
         <Ear2></Ear2>
       </DogFace>
       <DogBody>
-        <Leg1>
+        <Leg1 running={running}>
           <Paw1></Paw1>
         </Leg1>
-        <Leg2>
+        <Leg2 running={running}>
           <Paw2></Paw2>
         </Leg2>
-        <Leg3>
+        <Leg3 running={running}>
           <Paw3></Paw3>
         </Leg3>
-        <Leg4>
+        <Leg4 running={running}>
           <Paw4></Paw4>
         </Leg4>
       </DogBody>

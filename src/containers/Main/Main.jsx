@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { useEffect } from "react";
 import Styled from "./Main.styles";
 import { connect } from "react-redux";
@@ -7,7 +7,7 @@ import {
   updateZMove,
   updateMaxScrollValue,
 } from "../../modules/scroll";
-// import FrontDog from "../../components/MovingDog/FrontDog";
+import FrontDog from "../../components/MovingDog/FrontDog";
 import BackDog from "../../components/MovingDog/BackDog";
 
 const Main = ({
@@ -20,6 +20,7 @@ const Main = ({
 }) => {
   const houseRef = useRef(null);
   const mainRef = useRef(null);
+  const [scrollState, setScrollState] = useState(false);
 
   useEffect(() => {
     if (mainRef.current) {
@@ -60,6 +61,35 @@ const Main = ({
     window.scrollY = 0;
   }, []);
 
+  const timeoutID = useRef(null);
+  useEffect(() => {
+    window.addEventListener("scroll", function () {
+      // console.log("timeoutID", timeoutID);
+      if (timeoutID) {
+        clearTimeout(timeoutID.current);
+      }
+      setScrollState(true);
+
+      timeoutID.current = setTimeout(function () {
+        setScrollState(false);
+      }, 1000);
+    });
+    return () => {
+      window.removeEventListener("scroll", function () {});
+    };
+  }, []);
+
+  // useEffect(() => {
+  //   console.log("스크롤 상태", scrollState);
+  //   if (scrollState) {
+  //     // true 클래스 추가
+  //   }
+
+  //   if (!scrollState) {
+  //     // false 클래스 제거
+  //   }
+  // }, [scrollState]);
+
   return (
     <Styled.mainwrapper ref={mainRef}>
       <Styled.progressbarcontainer>
@@ -97,8 +127,10 @@ const Main = ({
               </Styled.wallcontent>
             </Styled.wall>
           </Styled.house>
-          {/* <FrontDog></FrontDog> */}
-          <BackDog></BackDog>
+          {/* <FrontDog running={scrollState}></FrontDog> */}
+          {/* <FrontDog animation={scrollPostionState > 90}</FrontDog> }></FrontDog> */}
+          {/* <FrontDog animation={running} running={scrollState}></FrontDog> */}
+          <BackDog running={scrollState}></BackDog>
         </Styled.stage>
       </Styled.world>
     </Styled.mainwrapper>
