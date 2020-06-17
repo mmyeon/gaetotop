@@ -21,6 +21,10 @@ const Main = ({
   const houseRef = useRef(null);
   const mainRef = useRef(null);
   const [scrollState, setScrollState] = useState(false);
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [forward, setForward] = useState(false);
+  const [backward, setBackward] = useState(false);
+  const [direction, setDirection] = useState("front");
 
   useEffect(() => {
     if (mainRef.current) {
@@ -58,7 +62,7 @@ const Main = ({
   }, [handleResize]);
 
   useEffect(() => {
-    window.scrollY = 0;
+    window.scrollY = 10;
   }, []);
 
   const timeoutID = useRef(null);
@@ -79,16 +83,33 @@ const Main = ({
     };
   }, []);
 
-  // useEffect(() => {
-  //   console.log("스크롤 상태", scrollState);
-  //   if (scrollState) {
-  //     // true 클래스 추가
-  //   }
+  useEffect(() => {
+    console.log("yOffset", yOffset);
+    // setForward(true);
+    // setDirection("front");
+    if (scrollState) {
+      setLastScrollTop(yOffset);
+      console.log("lastScrollTop", lastScrollTop);
 
-  //   if (!scrollState) {
-  //     // false 클래스 제거
+      if (lastScrollTop > yOffset) {
+        setDirection("front");
+        // setForward(true);
+        // setBackward(false);
+      } else if (lastScrollTop < yOffset) {
+        setDirection("back");
+        // setForward(false);
+        // setBackward(true);
+      }
+    }
+  }, [scrollState, yOffset, lastScrollTop]);
+
+  // TODO: 강아지 모습이 겹쳐보이는 걸 막기위해 뒷모습이 트루라면 앞모습은 false는 어떨까?
+  // 강아지 앞모습 뒷모습이 반복되면서 무한업데이트되면서 오류남
+  // useEffect(() => {
+  //   if (backward) {
+  //     setForward(!forward);
   //   }
-  // }, [scrollState]);
+  // }, [backward,forward]);
 
   return (
     <Styled.mainwrapper ref={mainRef}>
@@ -127,10 +148,10 @@ const Main = ({
               </Styled.wallcontent>
             </Styled.wall>
           </Styled.house>
-          {/* <FrontDog running={scrollState}></FrontDog> */}
+          {direction === "front" && <FrontDog running={scrollState}></FrontDog>}
           {/* <FrontDog animation={scrollPostionState > 90}</FrontDog> }></FrontDog> */}
           {/* <FrontDog animation={running} running={scrollState}></FrontDog> */}
-          <BackDog running={scrollState}></BackDog>
+          {direction === "back" && <BackDog running={scrollState}></BackDog>}
         </Styled.stage>
       </Styled.world>
     </Styled.mainwrapper>
