@@ -22,8 +22,6 @@ const Main = ({
   const mainRef = useRef(null);
   const [scrollState, setScrollState] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
-  const [forward, setForward] = useState(false);
-  const [backward, setBackward] = useState(false);
   const [direction, setDirection] = useState("front");
 
   useEffect(() => {
@@ -68,7 +66,6 @@ const Main = ({
   const timeoutID = useRef(null);
   useEffect(() => {
     window.addEventListener("scroll", function () {
-      // console.log("timeoutID", timeoutID);
       if (timeoutID) {
         clearTimeout(timeoutID.current);
       }
@@ -85,31 +82,17 @@ const Main = ({
 
   useEffect(() => {
     console.log("yOffset", yOffset);
-    // setForward(true);
-    // setDirection("front");
     if (scrollState) {
       setLastScrollTop(yOffset);
       console.log("lastScrollTop", lastScrollTop);
 
       if (lastScrollTop > yOffset) {
         setDirection("front");
-        // setForward(true);
-        // setBackward(false);
       } else if (lastScrollTop < yOffset) {
         setDirection("back");
-        // setForward(false);
-        // setBackward(true);
       }
     }
   }, [scrollState, yOffset, lastScrollTop]);
-
-  // TODO: 강아지 모습이 겹쳐보이는 걸 막기위해 뒷모습이 트루라면 앞모습은 false는 어떨까?
-  // 강아지 앞모습 뒷모습이 반복되면서 무한업데이트되면서 오류남
-  // useEffect(() => {
-  //   if (backward) {
-  //     setForward(!forward);
-  //   }
-  // }, [backward,forward]);
 
   return (
     <Styled.mainwrapper ref={mainRef}>
