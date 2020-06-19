@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { keyframes, css } from "styled-components";
+import { COLORS } from "../../styles/common";
 
 const wag = keyframes`
 50% {
@@ -48,7 +49,7 @@ const Walkingdog = styled.div`
 `;
 
 const DogFace = styled.div`
-  background: peachpuff;
+  background: ${COLORS.mallangWhite};
   height: 110px;
   width: 120px;
   position: relative;
@@ -60,7 +61,7 @@ const DogFace = styled.div`
 `;
 
 const DogBody = styled.div`
-  background: peachpuff;
+  background: ${COLORS.mallangWhite};
   height: 100px;
   width: 170px;
   position: relative;
@@ -71,7 +72,7 @@ const DogBody = styled.div`
 `;
 
 const dogLeg = styled.div`
-  background: peachpuff;
+  background: ${COLORS.mallangWhite};
   width: 18px;
   height: 50px;
   position: relative;
@@ -106,7 +107,6 @@ const Leg2 = styled(dogLeg)`
 const Leg3 = styled(dogLeg)`
   top: -83px;
   left: 149px;
-  background: peachpuff;
 
   ${({ running }) =>
     running &&
@@ -117,7 +117,6 @@ const Leg3 = styled(dogLeg)`
 `;
 
 const Leg4 = styled(dogLeg)`
-  background: peachpuff;
   top: -133px;
   left: 178px;
 
@@ -130,41 +129,26 @@ const Leg4 = styled(dogLeg)`
 `;
 
 const Paw = styled.div`
+  background: ${COLORS.mallangWhite};
   width: 20px;
   height: 24px;
-  background: peachpuff;
   position: relative;
   border-radius: 20px 20px 40px 40px;
+  transform: rotate(70deg);
+  right: 8px;
+  top: 31px;
 `;
 
-const Paw1 = styled(Paw)`
-  right: 8px;
-  top: 31px;
-  transform: rotate(70deg);
-`;
-const Paw2 = styled(Paw)`
-  right: 8px;
-  top: 31px;
-  transform: rotate(70deg);
-`;
-const Paw3 = styled(Paw)`
-  right: 8px;
-  top: 31px;
-  background: peachpuff;
-  transform: rotate(70deg);
-`;
-const Paw4 = styled(Paw)`
-  right: 8px;
-  top: 31px;
-  background: peachpuff;
-  transform: rotate(70deg);
-`;
+const Paw1 = styled(Paw)``;
+const Paw2 = styled(Paw)``;
+const Paw3 = styled(Paw)``;
+const Paw4 = styled(Paw)``;
 
 const Tail = styled.div`
   height: 100px;
   width: 100px;
   background-color: transparent;
-  box-shadow: 49px 10px 0px 0px peachpuff;
+  box-shadow: 49px 10px 0px 0px ${COLORS.mallangWhite};
   border-radius: 80%;
   position: relative;
   bottom: 345px;
@@ -174,7 +158,7 @@ const Tail = styled.div`
 `;
 
 const Ear = styled.div`
-  background: peachpuff;
+  background: ${COLORS.mallangWhite};
   width: 41px;
   height: 80px;
   position: relative;
@@ -194,7 +178,7 @@ const Ear2 = styled(Ear)`
 const EarInside1 = styled(Ear1)`
   width: 25px;
   height: 28px;
-  background: #de6465;
+  background: ${COLORS.mallangRed};
   opacity: 80%;
   top: -195px;
   left: 8px;
@@ -203,7 +187,7 @@ const EarInside1 = styled(Ear1)`
 const EarInside2 = styled(Ear2)`
   width: 25px;
   height: 28px;
-  background: #de6465;
+  background: ${COLORS.mallangRed};
   opacity: 80%;
   top: -223px;
   left: 87px;
@@ -211,7 +195,7 @@ const EarInside2 = styled(Ear2)`
 
 const Nose = styled.div`
   position: relative;
-  background-color: black;
+  background-color: ${COLORS.mallangBlack};
   height: 12px;
   width: 18px;
   top: -169px;
@@ -221,7 +205,7 @@ const Nose = styled.div`
 `;
 
 const Eye = styled.div`
-  background: black;
+  background-color: ${COLORS.mallangBlack};
   width: 10px;
   height: 13px;
   position: relative;
@@ -241,12 +225,12 @@ const Eye2 = styled(Eye)`
 const Mouth = styled.div`
   width: 23px;
   height: 12px;
-  border: 2px solid black;
+  border: 2px solid ${COLORS.mallangBlack};
   border-top-left-radius: 100px;
   border-top-right-radius: 120px;
   border-bottom: 0px;
   position: relative;
-  background: peachpuff;
+  background: ${COLORS.mallangWhite};
   z-index: -1;
 `;
 
@@ -268,7 +252,7 @@ const Tongue = styled.div`
   left: 54px;
   width: 14px;
   height: 20px;
-  background: #de6465;
+  background: ${COLORS.mallangRed};
   border-radius: 5px 5px 10px 10px;
   animation: ${tongue} 0.3s none infinite;
   transform-origin: 50% 0%;
