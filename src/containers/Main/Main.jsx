@@ -2,6 +2,7 @@ import React, { useState, useRef, useCallback } from "react";
 import { useEffect } from "react";
 import Styled from "./Main.styles";
 import { connect } from "react-redux";
+import db from "../../db";
 import {
   updateYOffset,
   updateZMove,
@@ -18,6 +19,10 @@ const Main = ({
   maxScrollValue,
   updateMaxScrollValue,
 }) => {
+  // console.log(
+  //   "db.title",
+  //   db.map((item) => item.title)
+  // );
   const houseRef = useRef(null);
   const mainRef = useRef(null);
   const [scrollState, setScrollState] = useState(false);
@@ -35,6 +40,7 @@ const Main = ({
 
   const handleScroll = useCallback(() => {
     updateYOffset(window.pageYOffset);
+    // updateZMove(parseInt(scrollPer * 980, 10) - 490);
     updateZMove(parseInt(scrollPer * 980, 10) - 490);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,7 +48,7 @@ const Main = ({
 
   const handleResize = useCallback(() => {
     updateMaxScrollValue(mainRef.current.clientHeight - window.innerHeight);
-  }, []);
+  }, [mainRef]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -81,10 +87,8 @@ const Main = ({
   }, []);
 
   useEffect(() => {
-    console.log("yOffset", yOffset);
     if (scrollState) {
       setLastScrollTop(yOffset);
-      console.log("lastScrollTop", lastScrollTop);
 
       if (lastScrollTop > yOffset) {
         setDirection("front");
@@ -112,22 +116,46 @@ const Main = ({
             ></Styled.wallside>
             <Styled.wall front="frontA">
               <Styled.wallcontent>
-                <Styled.walltitle>말랑이가 아파요{yOffset}</Styled.walltitle>
+                <Styled.walltitle>
+                  <h3> {db.map((item) => item.title)}</h3>
+                  <p></p>
+                </Styled.walltitle>
               </Styled.wallcontent>
             </Styled.wall>
             <Styled.wall front="frontB">
               <Styled.wallcontent>
-                <Styled.walltitle>병원에 찾아갔어요{yOffset}</Styled.walltitle>
+                <Styled.walltitle>
+                  <h3>"언니가 너 안 아프도록 해줄게" </h3>
+                  <p>
+                    그 날부터 밤새 병원과 수술방법에 대해 알아봤다. 외과 수술
+                    경력이 많은 수의사일 것, 입원 기간이 짧을 것, 복용하는 약이
+                    많지 않은 곳으로 알아보고 수술을 결정했다.
+                  </p>
+                </Styled.walltitle>
               </Styled.wallcontent>
             </Styled.wall>
             <Styled.wall front="frontC">
               <Styled.wallcontent>
-                <Styled.walltitle>슬개골 수술을 받았어요</Styled.walltitle>
+                <Styled.walltitle>
+                  <h3>"말랑아 걸어줘서 고마워" </h3>
+                  <p>
+                    말랑이는 총 3일 입원했고, 수술 후 2일 째부터 걷기 시작했다.
+                    자주 걸을 수록 붕대풀고 회복이 빠르다는 수의사의 말에 매일 2
+                    ~ 3회씩 걷도록 닭가슴살로 유혹했다.
+                  </p>
+                </Styled.walltitle>
               </Styled.wallcontent>
             </Styled.wall>
             <Styled.wall frontD>
               <Styled.wallcontent>
-                <Styled.walltitle>수술 후 회복하고 있어요</Styled.walltitle>
+                <Styled.walltitle>
+                  <h3>"말랑아 이제 건강해지자" </h3>
+                  <p>
+                    10일 뒤 붕대를 풀고 그 날부터 산책나가는 시간을 늘렸다. 수술
+                    후 3개월이 지난 지금은 기쁘면 방방 뛰고 비둘기 쫓으러
+                    뛰어다니는 2살 강아지가 되었다.
+                  </p>
+                </Styled.walltitle>
               </Styled.wallcontent>
             </Styled.wall>
           </Styled.house>

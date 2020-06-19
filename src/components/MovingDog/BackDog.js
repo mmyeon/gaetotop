@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { keyframes, css } from "styled-components";
+import { COLORS } from "../../styles/common";
 
 const wag = keyframes`
 50% {
@@ -8,21 +9,21 @@ const wag = keyframes`
 `;
 
 const runningFrontLeg = keyframes`
-50%{
+50% {
     transform : rotate(30deg);
 }
 `;
 
 const runningBackLeg = keyframes`
-50%{
-    transform : rotate(-10deg);
+50% {
+    transform : rotate(140deg);
 }
 `;
 
 const Walkingdog = styled.div`
   position: absolute;
-  left: 40%;
-  bottom: 25%;
+  left: 43%;
+  bottom: 20%;
   width: 10vw;
   height: 15.58vw;
   transform-style: preserve-3d;
@@ -30,19 +31,19 @@ const Walkingdog = styled.div`
 `;
 
 const DogFace = styled.div`
-  background: peachpuff;
+  background: ${COLORS.mallangWhite};
   height: 110px;
   width: 120px;
   position: relative;
-  top: 55%;
-  left: 94%;
+  top: 71px;
+  left: 88px;
   border-radius: 60px 60px 120px 120px;
   bottom: 573px;
   transform-style: preserve-3d;
 `;
 
 const DogBody = styled.div`
-  background: peachpuff;
+  background: ${COLORS.mallangWhite};
   height: 155px;
   width: 110px;
   position: relative;
@@ -54,10 +55,9 @@ const DogBody = styled.div`
 `;
 
 const dogLeg = styled.div`
-  background: peachpuff;
+  background: ${COLORS.mallangWhite};
   width: 18px;
   height: 50px;
-  background: peachpuff;
   transform: rotate(112deg);
   border-radius: 0px 0px 50px 50px;
   position: relative;
@@ -87,8 +87,8 @@ const Leg2 = styled(dogLeg)`
 `;
 
 const Leg3 = styled(dogLeg)`
-  top: -80px;
-  left: 13px;
+  top: -85px;
+  left: 14px;
 
   ${({ running }) =>
     running &&
@@ -99,7 +99,7 @@ const Leg3 = styled(dogLeg)`
 `;
 
 const Leg4 = styled(dogLeg)`
-  top: -96px;
+  top: -101px;
   left: 3px;
 
   ${({ running }) =>
@@ -113,7 +113,7 @@ const Leg4 = styled(dogLeg)`
 const Paw = styled.div`
   width: 20px;
   height: 24px;
-  background: peachpuff;
+  background: ${COLORS.mallangWhite};
   position: relative;
   border-radius: 20px 20px 40px 40px;
   transform: rotate(260deg);
@@ -130,7 +130,7 @@ const Tail = styled.div`
   height: 100px;
   width: 100px;
   background-color: transparent;
-  box-shadow: -49px -10px 0px 0px peachpuff;
+  box-shadow: -49px -10px 0px 0px ${COLORS.mallangWhite};
   border-radius: 80%;
   position: relative;
   bottom: 150px;
@@ -140,7 +140,7 @@ const Tail = styled.div`
 `;
 
 const Ear = styled.div`
-  background: peachpuff;
+  background: ${COLORS.mallangWhite};
   width: 41px;
   height: 80px;
   position: relative;

@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import { COLORS } from "../../styles/common";
 
 const mainwrapper = styled.div`
   height: 500vw;
   color: #555;
-  background: #fff000;
+  background: rgba(153, 217, 88, 0.76);
+  /* background: ${COLORS.wallUpDown}; */
 `;
 
 const progressbarcontainer = styled.div`
@@ -16,8 +18,11 @@ const progressbarcontainer = styled.div`
   width: 100vw;
 `;
 
-const progressbar = styled.div`
-  width: ${(props) => `${props.width}%`};
+const progressbar = styled.div.attrs((props) => ({
+  style: {
+    width: `${props.width}%`,
+  },
+}))`
   height: 100%;
   background: #00a8ff;
 `;
@@ -53,7 +58,7 @@ const wall = styled.section`
   top: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(160, 195, 210, 0.8);
 
   transform: ${({ front }) => {
     switch (front) {
@@ -70,7 +75,7 @@ const wall = styled.section`
 `;
 
 const wallside = styled(wall)`
-  background: #f8f8f8;
+  background: #a0c3d2;
   width: 1000vw;
   transform: ${({ transform }) => transform};
 `;
@@ -82,7 +87,7 @@ const wallcontent = styled.div`
   height: 100vh;
 `;
 
-const walltitle = styled.h2`
+const walltitle = styled.div`
   font-size: 5rem;
 `;
 

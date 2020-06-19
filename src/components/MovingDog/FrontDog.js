@@ -4,12 +4,12 @@ import { COLORS } from "../../styles/common";
 
 const wag = keyframes`
 50% {
-    transform: rotate(10deg);
+  transform: rotate(10deg);
   }
 `;
 
 const blink = keyframes`
- 0%, 100% {
+0%, 100% {
     transform: scale(1, 0.05);
   }
   5%, 95% {
@@ -27,21 +27,21 @@ const tongue = keyframes`
 `;
 
 const runningFrontLeg = keyframes`
-50%{
-    transform : rotate(30deg);
+50% {
+      transform : rotate(30deg);
 }
 `;
 
 const runningBackLeg = keyframes`
 50%{
-    transform : rotate(-70deg);
+  transform : rotate(-70deg);
 }
 `;
 
 const Walkingdog = styled.div`
   position: absolute;
-  left: 40%;
-  bottom: 25%;
+  left: 43%;
+  bottom: 20%;
   width: 10vw;
   height: 15.58vw;
   transform-style: preserve-3d;
