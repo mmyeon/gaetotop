@@ -3,11 +3,7 @@ import { useEffect } from "react";
 import Styled from "./Main.styles";
 import { connect } from "react-redux";
 import db from "../../db";
-import {
-  updateYOffset,
-  updateZMove,
-  updateMaxScrollValue,
-} from "../../modules/scroll";
+import { updateYOffset, updateMaxScrollValue } from "../../modules/scroll";
 import FrontDog from "../../components/MovingDog/FrontDog";
 import BackDog from "../../components/MovingDog/BackDog";
 
@@ -15,8 +11,7 @@ const Main = ({
   yOffset,
   updateYOffset,
   zMove,
-  updateZMove,
-  maxScrollValue,
+  scrollPer,
   updateMaxScrollValue,
 }) => {
   // console.log(
@@ -36,19 +31,13 @@ const Main = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mainRef.current]);
 
-  const scrollPer = yOffset / maxScrollValue;
-
   const handleScroll = useCallback(() => {
     updateYOffset(window.pageYOffset);
-    // updateZMove(parseInt(scrollPer * 980, 10) - 490);
-    updateZMove(parseInt(scrollPer * 980, 10) - 490);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scrollPer, yOffset]);
+  }, [updateYOffset]);
 
   const handleResize = useCallback(() => {
     updateMaxScrollValue(mainRef.current.clientHeight - window.innerHeight);
-  }, [mainRef]);
+  }, [updateMaxScrollValue]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -172,15 +161,13 @@ const Main = ({
 const mapStateToProps = ({ scroll }) => ({
   yOffset: scroll.yOffset,
   zMove: scroll.zMove,
+  scrollPer: scroll.scrollPer,
   maxScrollValue: scroll.maxScrollValue,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   updateYOffset: (val) => {
     dispatch(updateYOffset(val));
-  },
-  updateZMove: (val) => {
-    dispatch(updateZMove(val));
   },
   updateMaxScrollValue: (val) => {
     dispatch(updateMaxScrollValue(val));

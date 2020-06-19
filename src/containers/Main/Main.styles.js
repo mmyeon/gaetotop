@@ -45,10 +45,13 @@ const stage = styled.div`
   transform-style: preserve-3d;
 `;
 
-const house = styled.div`
+const house = styled.div.attrs((props) => ({
+  style: {
+    transform: `${props.transform}`,
+  },
+}))`
   width: 100vw;
   height: 100vh;
-  transform: ${(props) => `${props.transform}`};
   transform-style: preserve-3d;
 `;
 
