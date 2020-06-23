@@ -37,7 +37,7 @@ const DogFace = styled.div`
   position: relative;
   top: 71px;
   left: 88px;
-  border-radius: 60px 60px 120px 120px;
+  border-radius: 80px 80px 60px 60px;
   bottom: 573px;
   transform-style: preserve-3d;
 `;
@@ -68,46 +68,46 @@ const Leg1 = styled(dogLeg)`
   top: 127px;
   left: 6px;
 
-  ${({ running }) =>
+  /* ${({ running }) =>
     running &&
     css`
       animation: ${runningFrontLeg} 0.5s alternate infinite linear;
-    `}
+    `} */
 `;
 
 const Leg2 = styled(dogLeg)`
   top: 49px;
   left: 15px;
 
-  ${({ running }) =>
+  /* ${({ running }) =>
     running &&
     css`
       animation: ${runningFrontLeg} 0.5s alternate infinite linear;
-    `}
+    `} */
 `;
 
 const Leg3 = styled(dogLeg)`
   top: -85px;
   left: 14px;
 
-  ${({ running }) =>
+  /* ${({ running }) =>
     running &&
     css`
       animation: ${runningBackLeg} 0.7s alternate infinite linear;
       animation-delay: 250ms;
-    `}
+    `} */
 `;
 
 const Leg4 = styled(dogLeg)`
   top: -101px;
   left: 3px;
 
-  ${({ running }) =>
+  /* ${({ running }) =>
     running &&
     css`
       animation: ${runningBackLeg} 0.7s alternate infinite linear;
       animation-delay: 250ms;
-    `}
+    `} */
 `;
 
 const Paw = styled.div`
@@ -148,12 +148,12 @@ const Ear = styled.div`
 `;
 
 const Ear1 = styled(Ear)`
-  bottom: 44px;
+  bottom: 22px;
   left: 0px;
 `;
 
 const Ear2 = styled(Ear)`
-  bottom: 125px;
+  bottom: 103px;
   left: 79px;
 `;
 

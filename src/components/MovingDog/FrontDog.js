@@ -51,11 +51,11 @@ const Walkingdog = styled.div`
 const DogFace = styled.div`
   background: ${COLORS.mallangWhite};
   height: 110px;
-  width: 120px;
+  width: 127px;
   position: relative;
   top: 95px;
   left: -13px;
-  border-radius: 60px 60px 120px 120px;
+  border-radius: 80px 80px 60px 60px;
   bottom: 573px;
   transform-style: preserve-3d;
 `;
@@ -83,49 +83,49 @@ const dogLeg = styled.div`
 `;
 
 const Leg1 = styled(dogLeg)`
-  top: 39px;
+  top:     39px;
   left: 49px;
 
-  ${({ running }) =>
+  /* ${({ running }) =>
     running &&
     css`
       animation: ${runningFrontLeg} 0.5s alternate infinite linear;
-    `}
+    `} */
 `;
 
 const Leg2 = styled(dogLeg)`
   top: -2px;
   left: 86px;
 
-  ${({ running }) =>
+  /* ${({ running }) =>
     running &&
     css`
       animation: ${runningFrontLeg} 0.5s alternate infinite linear;
-    `}
+    `} */
 `;
 
 const Leg3 = styled(dogLeg)`
   top: -83px;
   left: 149px;
 
-  ${({ running }) =>
+  /* ${({ running }) =>
     running &&
     css`
       animation: ${runningBackLeg} 0.7s alternate infinite linear;
       animation-delay: 250ms;
-    `}
+    `} */
 `;
 
 const Leg4 = styled(dogLeg)`
   top: -133px;
   left: 178px;
 
-  ${({ running }) =>
+  /* ${({ running }) =>
     running &&
     css`
       animation: ${runningBackLeg} 0.7s alternate infinite linear;
       animation-delay: 250ms;
-    `}
+    `} */
 `;
 
 const Paw = styled.div`
@@ -162,17 +162,17 @@ const Ear = styled.div`
   width: 41px;
   height: 80px;
   position: relative;
-  border-radius: 800px 800px 120px 120px;
+  border-radius: 800px 800px 180px 180px;
 `;
 
 const Ear1 = styled(Ear)`
-  top: -44px;
-  left: 0px;
+  top: -25px;
+  left: 1px;
 `;
 
 const Ear2 = styled(Ear)`
-  bottom: 123px;
-  left: 79px;
+  bottom: 104px;
+  left: 85px;
 `;
 
 const EarInside1 = styled(Ear1)`
@@ -180,8 +180,8 @@ const EarInside1 = styled(Ear1)`
   height: 28px;
   background: ${COLORS.mallangEarInside};
   opacity: 50%;
-  top: -195px;
-  left: 8px;
+  top: -178px;
+  left: 9px;
 `;
 
 const EarInside2 = styled(Ear2)`
@@ -189,8 +189,8 @@ const EarInside2 = styled(Ear2)`
   height: 28px;
   background: ${COLORS.mallangEarInside};
   opacity: 50%;
-  top: -223px;
-  left: 87px;
+  top: -206px;
+  left: 93px;
 `;
 
 const Nose = styled.div`
@@ -198,8 +198,8 @@ const Nose = styled.div`
   background-color: ${COLORS.mallangBlack};
   height: 12px;
   width: 18px;
-  top: -169px;
-  right: -51px;
+  top: -165px;
+  right: -54px;
   border-bottom-right-radius: 50% 100%;
   border-bottom-left-radius: 50% 100%;
 `;
@@ -214,12 +214,12 @@ const Eye = styled.div`
 `;
 
 const Eye1 = styled(Eye)`
-  bottom: 208px;
-  left: 23px;
+  bottom: 204px;
+  left: 26px;
 `;
 const Eye2 = styled(Eye)`
-  bottom: 220px;
-  left: 85px;
+  bottom: 216px;
+  left: 88px;
 `;
 
 const Mouth = styled.div`
@@ -236,20 +236,20 @@ const Mouth = styled.div`
 
 const Mouth1 = styled(Mouth)`
   transform: rotate(150deg);
-  bottom: 201px;
-  left: 41px;
+  bottom: 197px;
+  left: 44px;
 `;
 
 const Mouth2 = styled(Mouth)`
-  bottom: 214px;
+  bottom: 210px;
   transform: rotate(-150deg);
-  left: 55px;
+  left: 58px;
 `;
 
 const Tongue = styled.div`
   position: relative;
-  bottom: 222px;
-  left: 54px;
+  bottom: 220px;
+  left: 56px;
   width: 14px;
   height: 20px;
   background: ${COLORS.mallangTongue};
