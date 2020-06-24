@@ -3,7 +3,12 @@ import { useEffect } from "react";
 import Styled from "./Main.styles";
 import { connect } from "react-redux";
 import db from "../../db";
-import { updateYOffset, updateMaxScrollValue } from "../../modules/scroll";
+import {
+  updateYOffset,
+  updateMaxScrollValue,
+  updateScrollState,
+  updateLastScrollTop,
+} from "../../modules/scroll";
 import FrontDog from "../../components/MovingDog/FrontDog";
 import BackDog from "../../components/MovingDog/BackDog";
 
@@ -13,6 +18,10 @@ const Main = ({
   zMove,
   scrollPer,
   updateMaxScrollValue,
+  updateScrollState,
+  scrollState,
+  updateLastScrollTop,
+  direction,
 }) => {
   // console.log(
   //   "db.title",
@@ -20,9 +29,6 @@ const Main = ({
   // );
   const houseRef = useRef(null);
   const mainRef = useRef(null);
-  const [scrollState, setScrollState] = useState(false);
-  const [lastScrollTop, setLastScrollTop] = useState(0);
-  const [direction, setDirection] = useState("front");
 
   useEffect(() => {
     if (mainRef.current) {
@@ -31,22 +37,10 @@ const Main = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mainRef.current]);
 
-  const handleScroll = useCallback(() => {
-    updateYOffset(window.pageYOffset);
-  }, [updateYOffset]);
-
   const handleResize = useCallback(() => {
     updateMaxScrollValue(mainRef.current.clientHeight - window.innerHeight);
   }, [updateMaxScrollValue]);
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [handleScroll]);
-
-  // 리사이즈
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => {
@@ -64,28 +58,24 @@ const Main = ({
       if (timeoutID) {
         clearTimeout(timeoutID.current);
       }
-      setScrollState(true);
 
+      if (!scrollState) {
+        updateScrollState(true);
+      }
+      updateYOffset(window.pageYOffset);
+      // updateScrollState(false);
+
+      // timeoutID.current = setTimeout(function () {
+      //   setScrollState(false);
+      // }, 1000);
       timeoutID.current = setTimeout(function () {
-        setScrollState(false);
-      }, 1000);
+        updateScrollState(false);
+      }, 500);
     });
     return () => {
       window.removeEventListener("scroll", function () {});
     };
   }, []);
-
-  useEffect(() => {
-    if (scrollState) {
-      setLastScrollTop(yOffset);
-
-      if (lastScrollTop > yOffset) {
-        setDirection("front");
-      } else if (lastScrollTop < yOffset) {
-        setDirection("back");
-      }
-    }
-  }, [scrollState, yOffset, lastScrollTop]);
 
   return (
     <Styled.mainwrapper ref={mainRef}>
@@ -163,6 +153,9 @@ const mapStateToProps = ({ scroll }) => ({
   zMove: scroll.zMove,
   scrollPer: scroll.scrollPer,
   maxScrollValue: scroll.maxScrollValue,
+  lastScrollTop: scroll.lastScrollTop,
+  scrollState: scroll.scrollState,
+  direction: scroll.direction,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -171,6 +164,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   updateMaxScrollValue: (val) => {
     dispatch(updateMaxScrollValue(val));
+  },
+  updateScrollState: (val) => {
+    dispatch(updateScrollState(val));
+  },
+  updateLastScrollTop: (val) => {
+    dispatch(updateLastScrollTop(val));
   },
 });
 
